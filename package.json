@@ -1,6 +1,6 @@
 {
   "name": "react-image-slick",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react-slick plugin for comfortable one image sliding",
   "main": "index.js",
   "scripts": {
