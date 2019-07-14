@@ -151,13 +151,15 @@ export default class ImageSlider extends React.Component {
       interval.map((elem, index) => {
         const elemWidth = (elem.end - elem.start);
         const showWidth = elemWidth ? elemWidth / primaryWidth * width : 0;
-        return <MySlide key={index} className={`${this.props.slideClassName}`} additionalStyle={{
-          ...this.props.slideStyle,
-          height: `${height}px`, width: `${showWidth}px`,
-          backgroundPositionX: `${-elem.start / primaryWidth * width}px`, backgroundSize: `${width *  widthMultiplier}px auto`,
-          backgroundImage: `url(${image})`,
-          backgroundRepeat: `no-repeat`,
-          backgroundPositionY: `${imagePositioning}`}}/>;
+        return (
+            <MySlide key={index} className={`${this.props.slideClassName}`} additionalStyle={{
+              ...this.props.slideStyle,
+              height: `${height}px`, width: `${showWidth}px`,
+              backgroundPositionX: `${-elem.start / primaryWidth * width}px`, backgroundSize: `${width *  widthMultiplier}px auto`,
+              backgroundImage: `url(${image})`,
+              backgroundRepeat: `no-repeat`,
+              backgroundPositionY: `${imagePositioning}`}}
+            />);
       })
     };
 
