@@ -14,23 +14,23 @@ export default class ImageSlider extends React.Component {
     }
   }
 
-  mapToPartialSums = (arr) => {
-    let partialSums = [];
-    if (!arr.length) return partialSums;
-
-    const totalSum = arr.reduce(function(sum, item) {
-      partialSums.push(sum);
-      return sum + item;
-    });
-    partialSums.push(totalSum);
-
-    return partialSums;
-  };
-
   render() {
     const { height, width, image, basis, imagePositioning } = this.props;
 
-    const partials = this.mapToPartialSums(basis);
+    const mapToPartialSums = (arr) => {
+      let partialSums = [];
+      if (!arr.length) return partialSums;
+
+      const totalSum = arr.reduce(function(sum, item) {
+        partialSums.push(sum);
+        return sum + item;
+      });
+      partialSums.push(totalSum);
+
+      return partialSums;
+    };
+
+    const partials = mapToPartialSums(basis);
 
     partials.unshift(0);
 
