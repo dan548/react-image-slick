@@ -1,0 +1,49 @@
+{
+  "name": "react-image-slick",
+  "version": "1.0.0",
+  "description": "react-slick plugin for comfortable one image sliding",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "./node_modules/.bin/eslint src"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dan548/react-image-slick"
+  },
+  "keywords": [
+    "slick",
+    "carousel",
+    "Image slider",
+    "one-image slider",
+    "slider",
+    "react-component"
+  ],
+  "author": "Daniil Polyakov <daniil.polyakov@tutanota.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-plugin-react": "^7.14.2"
+  },
+  "dependencies": {
+    "react-slick": "^0.24.0",
+    "react-scripts": "3.0.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.1 || ^16.0.0",
+    "react-dom": "^0.14.0 || ^15.0.1 || ^16.0.0",
+    "prop-types": "^15.7.2"
+  },
+  "optionalDependencies": {
+    "slick-carousel": "^1.8.1"
+  },
+  "bugs": {
+    "url": "https://github.com/dan548/react-image-slick/issues"
+  },
+  "homepage": "https://github.com/dan548/react-image-slick#readme"
+}
