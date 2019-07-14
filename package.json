@@ -31,13 +31,13 @@
     "eslint-plugin-react": "^7.14.2"
   },
   "dependencies": {
-    "react-slick": "^0.24.0",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-slick": "^0.24.0"
   },
   "peerDependencies": {
+    "prop-types": "^15.7.2",
     "react": "^0.14.0 || ^15.0.1 || ^16.0.0",
-    "react-dom": "^0.14.0 || ^15.0.1 || ^16.0.0",
-    "prop-types": "^15.7.2"
+    "react-dom": "^0.14.0 || ^15.0.1 || ^16.0.0"
   },
   "optionalDependencies": {
     "slick-carousel": "^1.8.1"
