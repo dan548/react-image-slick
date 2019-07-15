@@ -1,6 +1,6 @@
 {
   "name": "react-slick-image",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "react-slick plugin for comfortable one image sliding",
   "main": "dist/index.js",
   "scripts": {
@@ -47,12 +47,12 @@
     "prop-types": "^15.7.2",
     "react": "^0.14.0 || ^15.0.1 || ^16.0.0",
     "react-dom": "^0.14.0 || ^15.0.1 || ^16.0.0",
+    "react-scripts": "3.0.1",
     "regenerator-runtime": "^0.13.2",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2",
-    "react-scripts": "3.0.1"
+    "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
     "react-slick": "^0.24.0"
