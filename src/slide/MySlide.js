@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 export default class MySlide extends React.Component {
 
   render() {
@@ -12,7 +14,7 @@ export default class MySlide extends React.Component {
     const className = this.props.className ? ` ${this.props.className}` : '';
 
     return(
-      <div className={`${className}`} style={style}/>
+      <div className={`slide${className}`} style={style}/>
     );
   }
 }

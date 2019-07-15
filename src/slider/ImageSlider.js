@@ -14,23 +14,29 @@ export default class ImageSlider extends React.Component {
     }
   }
 
+  mapToPartialSums = (arr) => {
+    let partialSums = [];
+    if (!arr.length) return partialSums;
+
+    const totalSum = arr.reduce(function(sum, item) {
+      partialSums.push(sum);
+      return sum + item;
+    });
+    partialSums.push(totalSum);
+
+    return partialSums;
+  };
+
+  onSlideChange = (showSlides, current) => {
+    this.setState({
+      slideNumber: showSlides[current]
+    });
+  };
+
   render() {
     const { height, width, image, basis, imagePositioning } = this.props;
 
-    const mapToPartialSums = (arr) => {
-      let partialSums = [];
-      if (!arr.length) return partialSums;
-
-      const totalSum = arr.reduce(function(sum, item) {
-        partialSums.push(sum);
-        return sum + item;
-      });
-      partialSums.push(totalSum);
-
-      return partialSums;
-    };
-
-    const partials = mapToPartialSums(basis);
+    const partials = this.mapToPartialSums(basis);
 
     partials.unshift(0);
 
@@ -134,39 +140,30 @@ export default class ImageSlider extends React.Component {
       infinite: false,
       variableWidth: true,
       ...this.props.sliderSettings,
-      beforeChange: (current, next) => onSlideChange(next),
+      beforeChange: (current, next) => this.onSlideChange(showSlides, next),
       slidesToShow: this.state.slideNumber ? this.state.slideNumber : initSlides,
       centerMode: false,
       slidesToScroll: scroll,
       initialSlide: initIndex * scroll
     };
 
-    const onSlideChange = (current) => {
-      this.setState({
-        slideNumber: showSlides[current]
-      });
-    };
-
-    const renderList = () => {
-      interval.map((elem, index) => {
-        const elemWidth = (elem.end - elem.start);
-        const showWidth = elemWidth ? elemWidth / primaryWidth * width : 0;
-        return (
-            <MySlide key={index} className={`${this.props.slideClassName}`} additionalStyle={{
-              ...this.props.slideStyle,
-              height: `${height}px`, width: `${showWidth}px`,
-              backgroundPositionX: `${-elem.start / primaryWidth * width}px`, backgroundSize: `${width *  widthMultiplier}px auto`,
-              backgroundImage: `url(${image})`,
-              backgroundRepeat: `no-repeat`,
-              backgroundPositionY: `${imagePositioning}`}}
-            />);
-      })
-    };
-
     return(
       <Slider {...settings}>
         {
-          renderList()
+          interval.map((elem, index) => {
+            const elemWidth = (elem.end - elem.start);
+            const showWidth = elemWidth ? elemWidth / primaryWidth * width : 0;
+            return (
+              <MySlide key={index} className={`${this.props.slideClassName}`} additionalStyle={{
+                ...this.props.slideStyle,
+                height: `${height}px`, width: `${showWidth}px`,
+                backgroundPositionX: `${-elem.start / primaryWidth * width}px`, backgroundSize: `${width *  widthMultiplier}px auto`,
+                backgroundImage: `url(${image})`,
+                backgroundRepeat: `no-repeat`,
+                backgroundPositionY: `${imagePositioning}`}}
+              />
+            );
+          })
         }
       </Slider>
     );
@@ -177,7 +174,7 @@ ImageSlider.propTypes = {
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   image: PropTypes.any.isRequired,
-  basis: PropTypes.arrayOf(PropTypes.number),
+  basis: PropTypes.arrayOf(PropTypes.number).isRequired,
   sliderSettings: PropTypes.object,
   imagePositioning: PropTypes.string,
   slideStyle: PropTypes.object,

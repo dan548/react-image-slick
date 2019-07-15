@@ -1,3 +1,3 @@
-const ImageSlider = require("./slider/ImageSlider");
+import ImageSlider from './slider/ImageSlider';
 
-module.exports = ImageSlider;
+export default ImageSlider;
