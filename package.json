@@ -51,12 +51,11 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "react-scripts": "3.0.1"
   },
   "dependencies": {
-    "react-scripts": "3.0.1",
-    "react-slick": "^0.24.0",
-    "slick-carousel": "^1.8.1"
+    "react-slick": "^0.24.0"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
