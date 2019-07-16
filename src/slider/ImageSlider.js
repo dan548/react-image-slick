@@ -193,7 +193,6 @@ ImageSlider.propTypes = {
 ImageSlider.defaultProps = {
   slideClassName: '',
   imagePositioning: 'bottom',
-  slideClass: '',
   heightUnit: 'px',
   widthUnit: 'px'
 };
