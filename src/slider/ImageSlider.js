@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from "react-slick";
+import { withSize } from 'react-sizeme';
 
 import MySlide from '../slide/MySlide';
 
-export default class ImageSlider extends React.Component {
+import './style.css';
+
+class ImageSlider extends React.Component {
 
   constructor(props) {
     super(props);
@@ -34,7 +37,7 @@ export default class ImageSlider extends React.Component {
   };
 
   render() {
-    const { height, width, image, basis, imagePositioning } = this.props;
+    const { height, width, image, basis, imagePositioning, heightUnit, widthUnit, size } = this.props;
 
     const partials = this.mapToPartialSums(basis);
 
@@ -152,12 +155,13 @@ export default class ImageSlider extends React.Component {
         {
           interval.map((elem, index) => {
             const elemWidth = (elem.end - elem.start);
-            const showWidth = elemWidth ? elemWidth / primaryWidth * width : 0;
+            const showWidth = elemWidth ? elemWidth / primaryWidth * `${width ? width : size.width}` : 0;
             return (
               <MySlide key={index} className={`${this.props.slideClassName}`} additionalStyle={{
                 ...this.props.slideStyle,
-                height: `${height}px`, width: `${showWidth}px`,
-                backgroundPositionX: `${-elem.start / primaryWidth * width}px`, backgroundSize: `${width *  widthMultiplier}px auto`,
+                height: `${height}${heightUnit}`, width: `${showWidth}${widthUnit}`,
+                backgroundPositionX: `${-elem.start / primaryWidth * `${width ? width : size.width}`}${widthUnit}`,
+                backgroundSize: `${`${width ? width : size.width}` *  widthMultiplier}${widthUnit} auto`,
                 backgroundImage: `url(${image})`,
                 backgroundRepeat: `no-repeat`,
                 backgroundPositionY: `${imagePositioning}`}}
@@ -172,16 +176,26 @@ export default class ImageSlider extends React.Component {
 
 ImageSlider.propTypes = {
   height: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
+  heightUnit: PropTypes.string,
+  width: PropTypes.number,
+  widthUnit: PropTypes.string,
   image: PropTypes.any.isRequired,
   basis: PropTypes.arrayOf(PropTypes.number).isRequired,
   sliderSettings: PropTypes.object,
   imagePositioning: PropTypes.string,
   slideStyle: PropTypes.object,
-  slideClassName: PropTypes.string
+  slideClassName: PropTypes.string,
+  size: PropTypes.shape({
+    width: PropTypes.number.isRequired
+  })
 };
 
 ImageSlider.defaultProps = {
+  slideClassName: '',
   imagePositioning: 'bottom',
-  slideClass: ''
+  slideClass: '',
+  heightUnit: 'px',
+  widthUnit: 'px'
 };
+
+export default withSize({ monitorWidth: true, noPlaceholder: true })(ImageSlider)

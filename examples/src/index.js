@@ -3,8 +3,11 @@ import ReactDOM  from 'react-dom';
 
 import ImageSlider from '../../src/index';
 import image from './bg.jpg';
+import './style.css';
 
 ReactDOM.render(
-    <ImageSlider height={300} image={image} width={1000} basis={[280, 700, 300]}/>,
+    <main className={'main'}>
+        <ImageSlider imagePositioning={'center'} slideClassName={'slider'} image={image} height={50} heightUnit={'vh'} basis={[200, 500, 300]}/>
+    </main>,
 
     document.getElementById('root'));
