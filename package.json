@@ -1,6 +1,6 @@
 {
   "name": "react-slick-image",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "react-slick plugin for comfortable one image sliding",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "prepublishOnly": "yarn run transpile",
     "build": "webpack --mode production",
     "deploy": "gh-pages -d examples/dist",
-    "publish-demo": "yarn run build && yarn run deploy"
+    "publish-demo": "yarn run build && yarn run deploy",
+    "publish-version": "yarn run prepublishOnly && yarn publish"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,6 +56,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "react-sizeme": "^2.6.7",
     "react-slick": "^0.24.0"
   },
   "peerDependencies": {
