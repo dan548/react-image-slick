@@ -186,7 +186,7 @@ ImageSlider.propTypes = {
   slideStyle: PropTypes.object,
   slideClassName: PropTypes.string,
   size: PropTypes.shape({
-    width: PropTypes.number.isRequired
+    width: PropTypes.number
   })
 };
 
